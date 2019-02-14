@@ -99,13 +99,13 @@ set cursorline
 
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
 " 好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+" set t_ti= t_te=
 
 
 " 鼠标暂不启用, 键盘党....
-set mouse-=a
+" set mouse-=a
 " 启用鼠标
-" set mouse=a
+set mouse=a
 " Hide the mouse cursor while typing
 " set mousehide
 
@@ -228,20 +228,20 @@ set ttyfast
 set nrformats=
 
 " 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
-set relativenumber number
-au FocusLost * :set norelativenumber number
-au FocusGained * :set relativenumber
-" 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set norelativenumber number
-autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+" set relativenumber number
+" au FocusLost * :set norelativenumber number
+" au FocusGained * :set relativenumber
+" " 插入模式下用绝对行号, 普通模式下用相对
+" autocmd InsertEnter * :set norelativenumber number
+" autocmd InsertLeave * :set relativenumber
+" function! NumberToggle()
+"   if(&relativenumber == 1)
+"     set norelativenumber number
+"   else
+"     set relativenumber
+"   endif
+" endfunc
+" nnoremap <C-n> :call NumberToggle()<cr>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -326,10 +326,10 @@ endif
 " 主要按键重定义
 
 " 关闭方向键, 强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+" map <Left> <Nop>
+" map <Right> <Nop>
+" map <Up> <Nop>
+" map <Down> <Nop>
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
@@ -455,8 +455,8 @@ autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
 " 使用方向键切换buffer
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+" noremap <left> :bp<CR>
+" noremap <right> :bn<CR>
 
 
 " tab 操作
@@ -657,8 +657,8 @@ endif
 set background=dark
 set t_Co=256
 
-colorscheme solarized
-" colorscheme molokai
+" colorscheme solarized
+colorscheme molokai
 
 
 " 设置标记一列的背景颜色和数字一行颜色一致
@@ -675,3 +675,15 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
+
+" set column to 80
+set cc=80
+
+" copy/paste to with system clipboard
+" ref: http://blog.csdn.net/u012948976/article/details/50493431
+map <C-A> ggVG
+map !<C-A> <Esc>ggVGY
+map <F12> gg=G
+map <C-c> "+y
+" map <C-v> "+gp
+" imap <C-v> <Esc>"+gp
